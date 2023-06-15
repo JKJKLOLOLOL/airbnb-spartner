@@ -1,4 +1,7 @@
 class ListingsController < ApplicationController
+  def show
+    @listing = Listing.find(params[:id])
+
   def new
     @listing = Listing.new
   end
