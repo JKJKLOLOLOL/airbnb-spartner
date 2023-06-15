@@ -1,2 +1,0 @@
-class LisitngsController < ApplicationController
-end
