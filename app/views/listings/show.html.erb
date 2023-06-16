@@ -3,4 +3,7 @@
   <p><%= @listing.address %></p>
   <p><%= @listing.description %></p>
   <p>Max occupancy: <%= @listing.max_cap %></p>
+  <% if @listing.photos.attached? %>
+    <%= cl_image_tag @listing.photos.first.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 </div>
