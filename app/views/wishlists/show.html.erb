@@ -1,0 +1,13 @@
+<h1><%= @wishlist.name %></h1>
+
+  <% @wishlist.listings.each do |listing| %>
+    <p><%= listing.name %></p>
+    <br>
+    <p><%= listing.address %></p>
+    <br>
+    <p><%= listing.description %></p>
+    <hr>
+  <% end %>
+
+
+<p><%= @favourite %></p>
