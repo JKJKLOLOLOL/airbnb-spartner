@@ -1,8 +1,41 @@
 <div class="container pt-5">
-  <h1>New Reservation</h1>
-  <%= simple_form_for [@listing, @reservation] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit "Make reservation", class: "btn btn-primary" %>
-  <% end %>
+    <h1><strong>Request to book</strong></h1>
+</div>
+
+<div class="container pt-25">
+  <div class="row">
+    <div class="col-6">
+      <div class="form pt-5">
+        <div>
+          <%= simple_form_for [@listing, @reservation] do |f| %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.submit "Make reservation", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+      <div class="col-6">
+        <div class="card-product">
+          <div class="card">
+            <div class="row">
+              <div class="col-4">
+                <% if @listing.photos.attached? %>
+                  <%= cl_image_tag @listing.photos.first.key, height: 300, width: 400,  class:"img-fluid", style: "object-fit: cover;" %>
+                <% end %>
+              </div>
+              <div class="col-8">
+                <div class="card-product-infos">
+                <h2><%= @listing.name %></h2>
+                <p><%= @listing.description %></p>
+                <p><%= @listing.address %></p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
 </div>
