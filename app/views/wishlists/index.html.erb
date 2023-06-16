@@ -1,7 +1,29 @@
-<h1>My Wishlists</h1>
 
-<ol>
-  <% @wishlists.each do |wishlist| %>
-    <li><%= link_to wishlist.name, wishlist_path(wishlist) %></li>
-  <% end %>
-</ol>
+<div class="border border-primary d-flex align-items-center justify-content-center" style="background-image: url(<%= image_path('wishlist-banner.jpg')%>); background-position: center; background-size: cover; height: 350px;">
+  <div class="my-5">
+  </div>
+</div>
+
+<div class="container border border-primary my-5">
+  <div>
+    <h1 class="display-1">My Wishlists</h1>
+  </div>
+
+    <% if @wishlists.empty? %>
+
+      <h3>Create your first wishlist</h3>
+      <p>As you search, click the heart icon to save your favourite places and Experiences to a wishlist.</p>
+
+    <% else %>
+
+    <div class="all-cards">
+      <% @wishlists.each do |wishlist| %>
+        <div class="border border-primary p-3">
+          <div class="border border-primary">
+            <%= link_to wishlist.name, wishlist_path(wishlist) %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+    <% end %>
