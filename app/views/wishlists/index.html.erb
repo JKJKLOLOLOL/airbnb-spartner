@@ -1,7 +1,13 @@
-<h1>My Wishlists</h1>
+<div class = "container border border-primary my-5">
+  <div class = "container border border-primary my-5">
+    <h1>My Wishlists</h1>
+  </div>
 
-<ol>
-  <% @wishlists.each do |wishlist| %>
-    <li><%= link_to wishlist.name, wishlist_path(wishlist) %></li>
-  <% end %>
-</ol>
+  <div class = "container border border-primary my-5">
+    <ol>
+      <% @wishlists.each do |wishlist| %>
+        <li><%= link_to wishlist.name, wishlist_path(wishlist) %></li>
+      <% end %>
+    </ol>
+  </div>
+</div>
