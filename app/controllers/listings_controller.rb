@@ -1,5 +1,8 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show]
+  def index
+    @listings = Listing.all
+  end
 
   def new
     @listing = Listing.new
