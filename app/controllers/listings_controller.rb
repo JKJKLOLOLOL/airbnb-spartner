@@ -2,6 +2,8 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show]
   def index
     @listings = Listing.all
+    @wishlists = current_user.wishlists
+    @favourites = current_user.favourites
   end
 
   def new
@@ -15,7 +17,6 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to listing_path(@listing)
     else
-      raise
       render :new, status: :unprocessable_entity
     end
   end

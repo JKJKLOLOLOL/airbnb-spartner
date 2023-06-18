@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :reservations
   has_many :wishlists
   has_many :listings
+  has_many :favourites, through: :wishlists
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
