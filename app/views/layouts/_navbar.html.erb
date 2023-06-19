@@ -1,33 +1,44 @@
-<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon ">
-      <div class="container-fluid">
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+  <div class="container-fluid">
+      <div class="left-container">
         <%= link_to "#", class: "navbar-brand" do %>
           <%= image_tag "https://companieslogo.com/img/orig/ABNB-4aaade0f.png?t=1633511992" %>
         <% end %>
+    </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto">
-            <%# if user_signed_in? %>
-              <li class="nav-item active">
-                <%= link_to "Home", "#", class: "nav-link" %>
-              </li>
-              <li class="nav-item dropdown">
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <%= link_to "Action", "#", class: "dropdown-item" %>
-                  <%= link_to "Another action", "#", class: "dropdown-item" %>
-                  <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
-                </div>
-              </li>
-            <%# else %>
-              <!--li class="nav-item"-->
-                <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-              <!--/li-->
-            <%# end %>
-          </ul>
+    <div class="centered-container">
+      <% if request.path == "/listings" %>
+        <div class="btn-group btn-group-lg rounded" role="group" aria-label="...">
+          <button type="button" class="btn btn-secondary btn btn-light rounded-pill-left ">Anywhere</button>
+          <button type="button" class="btn btn-secondary btn btn-light pill-center">Any week</button>
+          <button type="button" class="btn btn-secondary btn btn-light rounded-pill-right ">Add guests <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
+        <% end %>
+    </div>
+
+    <div class="right-container">
+      <button class="btn-switch">Switch to hosting</button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <%# if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Home", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <%= image_tag "https://avatars.githubusercontent.com/u/130457340?v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Action", "#", class: "dropdown-item" %>
+                <%= link_to "Another action", "#", class: "dropdown-item" %>
+                <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+        </ul>
       </div>
     </div>
+  </div>
+</div>
+<div class="navbar-line"></div>
