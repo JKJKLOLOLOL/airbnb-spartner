@@ -3,7 +3,6 @@ class WishlistsController < ApplicationController
     # @wishlists = Wishlist.all
     @wishlists = current_user.wishlists
   end
-
   def show
     @wishlist = Wishlist.find(params[:id])
   end

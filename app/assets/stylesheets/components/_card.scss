@@ -3,3 +3,10 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
+
+.img-alignme {
+  display: grid;
+  grid-template-columns: 6fr 2fr;
+  border-radius: 30px;
+  overflow: hidden;
+}
