@@ -1,0 +1,10 @@
+<h1>Welcome, user!</h1>
+<h2>Your reservations</h2>
+<h2>Pending review</h2>
+<% listings %>
+
+<% # show reservation requests of listings that belong to user AND status is pending
+# @listings = Listing.where(user: current_user, status:"Pending")
+# @reservations = Reservation.where(listing: @listings)
+
+# @reservation %>
