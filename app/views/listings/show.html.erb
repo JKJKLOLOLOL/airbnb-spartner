@@ -4,19 +4,16 @@
   <div class="details d-flex">
     <div style="flex-grow: 1">
       <p>
-        <i class="fa-solid fa-star"></i> 33 reviews &nbsp; . &nbsp; <i class="fa-solid fa-certificate"></i> Superhost  &nbsp; . &nbsp; Kittila, Finland
+        <i class="fa-solid fa-star"></i> 33 reviews &nbsp; . &nbsp; <i class="fa-solid fa-certificate"></i> Superhost  &nbsp; . &nbsp; <%= @listing.address %>
       </p>
     </div>
     <div>
       <p>
-        <i class="fa-solid fa-arrow-up-from-bracket"></i> Share  &nbsp; &nbsp; <i class="fa-regular fa-heart"></i> Save
+        <i class="fa-solid fa-arrow-up-from-bracket"></i> Share  &nbsp; &nbsp; <i class="fa-regular fa-heart"></i> <%= link_to "Save", listing_path(@listing), style: "text-decoration: none; color: black;"%>
       </p>
     </div>
   </div>
 
-  <p><%= @listing.address %></p>
-  <p><%= @listing.description %></p>
-  <p>Max occupancy: <%= @listing.max_cap %></p>
   <% if @listing.photos.attached? %>
     <div class="container" style="
     overflow:hidden;
@@ -50,4 +47,67 @@
       </div>
     </div>
   <% end %>
+
+    <!-- restaurant menu / checkout-->
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-md-8">
+          <% username = @listing.user.email.split("@").first.capitalize %>
+          <h2>Home hosted by <%= username %></h2>
+
+          <div class="line"></div>
+
+          <!-- make a card -->
+          <div class="margin-top-btm">
+            <p><strong>Self check-in</strong><br>You can check in with the doorperson.</p>
+            <p><strong>Experienced Host</strong><br>Madhava has 433 reviews for other places.</p>
+          </div>
+
+          <div class="line"></div>
+
+          <!-- make a card -->
+          <div class="margin-top-btm">
+            <p><small><%= @listing.description %></small></p>
+          </div>
+
+          <!-- /menu -->
+        </div>
+          <div class="col-md-4">
+            <!-- checkout -->
+            <div class="reserve-container">
+
+              <div class="d-flex justify-content-between my-3">
+                <h2><strong><%= @listing.price.round %> SGD</strong><small>night</small></h2>
+              </div>
+
+              <div class="checkout outline">
+                <div class="d-flex" style="border-bottom: 1px solid #cacaca;">
+                  <div class="w-50 p-3" style="border-right: 1px solid #cacaca;">
+                    <div><strong>CHECK-IN</strong></div>
+                    <div><%= Date.today %></div>
+                  </div>
+                  <div class="w-50 p-3">
+                    <div><strong>CHECK-OUT</strong></div>
+                    <div><%= Date.today %></div>
+                  </div>
+                </div>
+                  <div class="w-50 p-3">
+                    <div><strong>GUESTS</strong></div>
+                    <div><%= @listing.max_cap %></div>
+                  </div>
+              </div>
+              <p class="my-3" style="text-align: center">You won't be charged yet</p>
+              <!-- make this a full length button -->
+              <a href="" class="reserve-btn w-100">Reserve</a>
+
+              <!-- /checkout -->
+              <div class="d-flex justify-content-between my-3">
+                <p><strong>Total</strong></p>
+                <p><strong>£23.80</strong></p>
+              </div>
+
+            </div>
+          </div>
+      </div>
+    </div>
 </div>
