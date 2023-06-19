@@ -17,7 +17,7 @@ user_bob = User.create(email: "bob@gmail.com", password: "123456")
 3.times do
   Wishlist.create(name: Faker::Address.state, user_id: user_bob.id)
 end
-listing = Listing.create(name: Faker::Restaurant.name, address: Faker::Address.street_address, description: "Bob's", max_cap: rand(0..5), price: rand(60..79), user_id: user_bob.id)
+listing = Listing.create(name: Faker::Restaurant.name, address: Faker::Address.street_address, description: "Bob's", max_cap: rand(1..5), price: rand(60..79), user_id: user_bob.id)
 file = URI.open("https://source.unsplash.com/featured/?home")
 listing.photos.attach(io: file, filename: "listing#{listing.id}.png", content_type: "image/png")
 listing.save!
