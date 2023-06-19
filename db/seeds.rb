@@ -13,9 +13,15 @@ Listing.destroy_all
 User.destroy_all
 
 p "CREATE USERS"
+user_bob = User.create(email: "bob@gmail.com", password: "123456")
+listing = Listing.create(name: Faker::Restaurant.name, address: Faker::Address.street_address, description: "Bob's", max_cap: rand(0..5), price: rand(60..79), user_id: user_bob.id)
+file = URI.open("https://source.unsplash.com/featured/?home")
+ listing.photos.attach(io: file, filename: "listing#{listing.id}.png", content_type: "image/png")
+ listing.save!
+
 
 10.times do |index|
-  User.create(email: "fake#{index}@gmail.com", password: "123456")
+  User.create(email: "#{Faker::Name.first_name}@gmail.com", password: "123456")
 end
 
 p "CREATE LISTINGS"
@@ -23,7 +29,7 @@ p "CREATE LISTINGS"
 5.times do
   user = User.all.sample
   2.times do
-   listing = Listing.create(name: Faker::Restaurant.name, address: Faker::Address.street_address, description: "Very nice place", max_cap: rand(0..5), user_id: user.id)
+   listing = Listing.create(name: Faker::Restaurant.name, address: Faker::Address.street_address, description: "Very nice place", max_cap: rand(0..5), price: rand(60..79), user_id: user.id)
    file = URI.open("https://source.unsplash.com/featured/?home")
     listing.photos.attach(io: file, filename: "listing#{listing.id}.png", content_type: "image/png")
     listing.save!
