@@ -8,6 +8,13 @@ body {
   background: white; // Using this variable
 }
 
+.cat-bar {
+  position: sticky;
+  top: 74px;
+  background-color: white;
+  z-index: 10;
+}
+
 .cat-bar img {
   height: 20px;
   width: 20px;
