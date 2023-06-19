@@ -11,3 +11,8 @@
 @import "components/index";
 @import "pages/index";
 //@import "bootstrap";
+
+.row.no-padding > * {
+  padding-right: 0;
+  padding-left: 0;
+}
