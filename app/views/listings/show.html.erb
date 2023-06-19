@@ -91,12 +91,6 @@
                     <div><%= Date.today %></div>
                   </div>
                 </div>
-                <%= simple_form_for([@listing, @reservation]) do |f| %>
-                  <%= f.input :start_date %>
-                  <%= f.input :end_date %>
-                  <%= f.input :number_of_people %>
-                  <%= f.submit "Make reservation", class: "btn btn-primary" %>
-                <% end %>
                   <div class="w-50 p-3">
                     <div><strong>GUESTS</strong></div>
                     <div><%= @listing.max_cap %></div>
@@ -111,6 +105,12 @@
                 <p><strong>Total</strong></p>
                 <p><strong>$<%=@listing.price.round * @listing.max_cap%></strong></p>
               </div>
+                <%= simple_form_for([@listing, @reservation]) do |f| %>
+                  <%= f.input :start_date %>
+                  <%= f.input :end_date %>
+                  <%= f.input :number_of_people %>
+                  <%= f.submit "Make reservation", class: "btn btn-primary" %>
+                <% end %>
 
             </div>
 
