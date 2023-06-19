@@ -5,10 +5,12 @@
     <% end %>
 
     <div class="btn-group btn-group-lg rounded" role="group" aria-label="...">
-      <button type="button" class="btn btn-secondary btn btn-light">Anywhere</button>
-      <button type="button" class="btn btn-secondary btn btn-light">Any week</button>
-      <button type="button" class="btn btn-secondary btn btn-light">Add guests</button>
+      <button type="button" class="btn btn-secondary btn btn-light rounded-pill-left ">Anywhere</button>
+      <button type="button" class="btn btn-secondary btn btn-light pill-center">Any week</button>
+      <button type="button" class="btn btn-secondary btn btn-light rounded-pill-right ">Add guests</button>
     </div>
+
+    <button class="btn-switch">Switch to hosting</button>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,13 +89,16 @@
                  <%= cl_image_tag listing.photos.first.key, crop: :fill %>
                 </div>
               <% end %>
-              <div class="card-body">
-                <div>
-                  <%= link_to listing.name, listing %></li>
-                  <p><%= listing.address %> </p>
-                  <p> 50 $ per night </p>
+              <div class="container">
+               <div class="row">
+                  <div class="card-bottom ">
+                    <div class="button-top-line d-flex justify-content-between">
+                      <p style= "color: black;"><%= link_to listing.address, listing %> </p>
+                      <p class="text-black" style= "color: black;" >⭐4,5</p>
+                    </div>
+                    <p> 50 $ per night </p>
+                  </div>
                 </div>
-              <p class="card-listing-rating">⭐4,5</p>
               </div>
             </div>
         </div>
