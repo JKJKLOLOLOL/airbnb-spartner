@@ -4,6 +4,13 @@
       <%= image_tag "https://companieslogo.com/img/orig/ABNB-4aaade0f.png?t=1633511992" %>
     <% end %>
 
+    <div class="btn-group btn-group-lg rounded" role="group" aria-label="...">
+      <button type="button" class="btn btn-secondary btn btn-light">Anywhere</button>
+      <button type="button" class="btn btn-secondary btn btn-light">Any week</button>
+      <button type="button" class="btn btn-secondary btn btn-light">Add guests</button>
+    </div>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,33 +32,66 @@
         <%# else %>
           <!--li class="nav-item"-->
             <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
-        <%# end %>
+            <!--/li-->
+          <%# end %>
       </ul>
     </div>
   </div>
 </div>
 
-
-
+<br><br><br>
 <div class="container">
-  <div class="row">
-
-      <% @listings.each do |listing| %>
-    <div class="col-md-4">
-        <div class="card m-2 rounded" style="width: 18rem;">
-        <img class="card-img-top" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
-          <div class="card-body">
-            <div>
-              <%= link_to listing.name, listing %></li>
-              <p><%= listing.address %> </p>
-              <p> 50 $ per night </p>
-          </div>
-          <p class="card-listing-rating">⭐4,5</p>
-          </div>
+  <div class="cat-bar px-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg">
+          <p>National parks</p>
         </div>
+        <div class="col-md-2">
+          <img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg">
+          <p>Rooms</p>
+        </div>
+        <div class="col-md-2">
+          <img src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg">
+          <p>OMG!</p>
+        </div>
+        <div class="col-md-2">
+          <img src="https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg">
+          <p>Beach</p>
+        </div>
+        <div class="col-md-2">
+          <img src="https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg">
+          <p>Earth homes</p>
+        </div>
+          <div class="col-md-2">
+          <img src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg">
+          <p>Cmaping</p>
+        </div>
+      </div>
     </div>
-        <% end %>
+  </div>
 
+
+  <div class="container">
+    <div class="row">
+      <% @listings.each do |listing| %>
+        <div class="col-md-4">
+            <div class="card-photo m-2 rounded" style="width: 18rem;">
+              <% if listing.photos.attached? %>
+                <%= cl_image_tag listing.photos.first.key, crop: :fill %>
+              <% end %>
+              <div class="card-body">
+                <div>
+                  <%= link_to listing.name, listing %></li>
+                  <p><%= listing.address %> </p>
+                  <p> 50 $ per night </p>
+                </div>
+              <p class="card-listing-rating">⭐4,5</p>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

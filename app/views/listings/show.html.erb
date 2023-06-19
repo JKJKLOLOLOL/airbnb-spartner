@@ -1,9 +1,53 @@
 <div class="container pt-5">
-  <h2><%= @listing.name %></h2>
+  <h2><strong><%= @listing.name %></strong></h2>
+
+  <div class="details d-flex">
+    <div style="flex-grow: 1">
+      <p>
+        <i class="fa-solid fa-star"></i> 33 reviews &nbsp; . &nbsp; <i class="fa-solid fa-certificate"></i> Superhost  &nbsp; . &nbsp; Kittila, Finland
+      </p>
+    </div>
+    <div>
+      <p>
+        <i class="fa-solid fa-arrow-up-from-bracket"></i> Share  &nbsp; &nbsp; <i class="fa-regular fa-heart"></i> Save
+      </p>
+    </div>
+  </div>
+
   <p><%= @listing.address %></p>
   <p><%= @listing.description %></p>
   <p>Max occupancy: <%= @listing.max_cap %></p>
   <% if @listing.photos.attached? %>
-    <%= cl_image_tag @listing.photos.first.key, height: 300, width: 400, crop: :fill %>
+    <div class="container" style="
+    overflow:hidden;
+    border-radius: 25px;
+    ">
+      <div class="row no-padding">
+        <div class="col-6">
+          <%= cl_image_tag @listing.photos.first.key, class: "", style:"
+          object-fit: cover;
+          height: 100%;
+          width: 100%", crop: :fill %>
+        </div>
+        <div class="col-6">
+          <div class="row no-padding">
+            <div class="col-6">
+            <%= cl_image_tag @listing.photos.first.key, class: "img-fluid", crop: :fill %>
+            </div>
+            <div class="col-6">
+            <%= cl_image_tag @listing.photos.first.key, class: "img-fluid", crop: :fill %>
+            </div>
+          </div>
+          <div class="row no-padding">
+            <div class="col-6">
+            <%= cl_image_tag @listing.photos.first.key, class: "img-fluid", crop: :fill %>
+            </div>
+            <div class="col-6">
+            <%= cl_image_tag @listing.photos.first.key, class: "img-fluid", crop: :fill %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
