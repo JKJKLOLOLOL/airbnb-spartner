@@ -1,10 +1,32 @@
-<h1>Welcome, user!</h1>
+<div style= "margin:100px;">
+ <% username = current_user.email.split("@").first.capitalize %>
+<h1><%= "Welcome, #{username}!"%></h1>
 <h2>Your reservations</h2>
 <h2>Pending review</h2>
-<% listings %>
 
-<% # show reservation requests of listings that belong to user AND status is pending
-# @listings = Listing.where(user: current_user, status:"Pending")
-# @reservations = Reservation.where(listing: @listings)
+<h1>Current user: <%= current_user.id %></h1>
 
-# @reservation %>
+</div>
+
+<div>
+<h2>
+  <table style="margin: auto; text-align: center; border: 1px;">
+    <tr>
+      <th>Accept/Decline</th>
+      <th>Status</th>
+      <th>Guest ID</th>
+      <th>Dates</th>
+      <th>Listing</th>
+    </tr>
+    <% @reservations.each do |r|%>
+      <tr>
+        <td>DROP MENU</td>
+        <td><%= r.status%></td>
+        <td><%= r.user_id%></td>
+        <td><%= "#{r.start_date} to #{r.end_date}" %></td>
+        <td><%= r.listing.name%><%="(##{r.listing_id})" %></td>
+      </tr>
+    <%end%>
+  </table>
+  </h2>
+</div>

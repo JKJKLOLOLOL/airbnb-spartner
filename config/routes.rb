@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "hosting", to: "pages#hosting"
-
 end
