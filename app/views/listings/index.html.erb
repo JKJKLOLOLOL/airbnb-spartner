@@ -66,12 +66,11 @@
         </div>
           <div class="col-md-2">
           <img src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg">
-          <p>Cmaping</p>
+          <p>Camping</p>
         </div>
       </div>
     </div>
   </div>
-
 
   <div class="container">
     <div class="row">
@@ -79,7 +78,14 @@
         <div class="col-md-4">
             <div class="card-photo m-2 rounded" style="width: 18rem;">
               <% if listing.photos.attached? %>
-                <%= cl_image_tag listing.photos.first.key, crop: :fill %>
+                <div style="position: relative">
+                <% if @favourites.pluck(:listing_id).include?(listing.id) %>
+                   <span style="font-size: 1.4rem; position: absolute; top: 15px; right: 15px; color: #f96cd3;" class="fa-solid fa-heart"></span>
+                <% else %>
+                    <span data-bs-toggle="modal" data-bs-target="#<%=listing.id%>Modal" style="font-size: 1.4rem; position: absolute; top: 15px; right: 15px; color: #f96cd3;" class="fa-regular fa-heart"></span>
+                <% end %>
+                 <%= cl_image_tag listing.photos.first.key, crop: :fill %>
+                </div>
               <% end %>
               <div class="card-body">
                 <div>
@@ -91,6 +97,26 @@
               </div>
             </div>
         </div>
+          <!-- Modal -->
+          <div class="modal fade" id="<%=listing.id%>Modal" tabindex="-1" aria-labelledby="<%=listing.id%>ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add <%=listing.name%> to wishlist</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <% @wishlists.each do |wishlist| %>
+                    <%= simple_form_for([wishlist, Favourite.new]) do |f| %>
+                      <%= f.hidden_field :listing_id, value: listing.id %>
+                      <%= f.submit wishlist.name, class: "btn btn-lg btn-danger", style: "color: white;" %>
+                    <% end %>
+                    <br>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
       <% end %>
     </div>
   </div>
