@@ -4,6 +4,7 @@ class ListingsController < ApplicationController
     @listings = Listing.all
     @wishlists = current_user.wishlists
     @favourites = current_user.favourites
+    # @listing = current_user.listings
   end
 
   def new
