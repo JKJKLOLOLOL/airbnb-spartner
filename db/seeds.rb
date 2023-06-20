@@ -17,7 +17,7 @@ user_bob = User.create(email: "bob@gmail.com", password: "123456")
 3.times do
   Wishlist.create(name: Faker::Address.state, user_id: user_bob.id)
 end
-listing = Listing.create(name: Faker::Restaurant.name, address: Faker::Address.street_address, description: "Bob's", max_cap: rand(0..5), price: rand(60..79), user_id: user_bob.id)
+listing = Listing.create(name: Faker::Restaurant.name, address: Faker::Address.street_address, description: "Bob's", max_cap: rand(1..5), price: rand(60..79), user_id: user_bob.id)
 file = URI.open("https://source.unsplash.com/featured/?home")
 listing.photos.attach(io: file, filename: "listing#{listing.id}.png", content_type: "image/png")
 listing.save!
@@ -53,5 +53,5 @@ p "CREATE RESERVATIONS"
   listing = Listing.where.not(user:).sample
   start = Date.today + rand(28).days
   status_options = ['Accepeted', 'Pending', 'Rejected']
-  Reservation.create(start_date: start, end_date: start + rand(4).days, user:, listing:, status: status_options.sample)
+  Reservation.create(start_date: start, end_date: start + rand(4).days, user:, number_of_people: rand(1..5), listing:, status: status_options.sample)
 end
