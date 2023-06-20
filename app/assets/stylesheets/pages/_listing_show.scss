@@ -19,9 +19,9 @@
   color: white;
 }
 
-.reserve-container {
+.rounded-container {
   padding: 15px;
-  height: 54vh;
+  height: 355px;;
   position: sticky;
   top: 80px;
   border: 1px solid #d8d7d7;
@@ -43,7 +43,8 @@
   }
 }
 
-h2 {
+// HAVE TO CHANGE
+.bolded-text {
   font-weight: 600;
   font-size: 28px;
 }
@@ -62,7 +63,33 @@ h2 {
   margin-bottom: 20px;
 }
 
-.container {
-  margin-top: 10px;
-  margin-bottom: 10px;
+.custom-date-input {
+  background-image: none;
+  border: none;
+  outline: none;
+  padding:4px;
+  font-size: .8rem;
+  margin: 0 !important;
+  background-color: white;
+  text-align: center;
+
+  & + .custom-date-input {
+    border-left: 1px solid black;
+  }
+}
+
+.custom-number-people {
+  width: 100%;
+  background-image: none;
+  border: none;
+  outline: none;
+  padding:4px;
+  font-size: .8rem;
+  margin: 0 !important;
+  background-color: white;
+  text-align: left;
+}
+
+.custom-submit {
+  width: 100%;
 }
