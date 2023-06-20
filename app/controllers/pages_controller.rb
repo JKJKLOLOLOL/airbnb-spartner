@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     #   end
     # end
 
-    @reservations = Reservation.joins(:listing).where('listings.user_id = ?', current_user.id)
+    @reservations = Reservation.joins(:listing).where('listings.user_id = ? AND reservations.status = ?', current_user.id, "Pending")
 
   end
 

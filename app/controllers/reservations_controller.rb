@@ -21,6 +21,20 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
   end
 
+  def accept
+    @reservation = Reservation.find(params[:id])
+    @reservation.status = "Accepeted"
+    @reservation.save
+    redirect_to hosting_path
+  end
+
+  def reject
+    @reservation = Reservation.find(params[:id])
+    @reservation.status = "Rejected"
+    @reservation.save
+    redirect_to hosting_path
+  end
+
   private
 
   def set_listing

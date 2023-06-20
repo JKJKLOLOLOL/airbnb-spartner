@@ -52,6 +52,6 @@ p "CREATE RESERVATIONS"
   user = User.all.sample
   listing = Listing.where.not(user:).sample
   start = Date.today + rand(28).days
-  status_options = ['Accepeted', 'Pending', 'Rejected']
+  status_options = ['Accepted', 'Pending', 'Rejected']
   Reservation.create(start_date: start, end_date: start + rand(4).days, user:, number_of_people: rand(1..5), listing:, status: status_options.sample)
 end

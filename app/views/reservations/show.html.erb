@@ -2,7 +2,7 @@
   <h1><strong>Reservation confirmed!</strong></h1>
   <h2> Start date: <%= @reservation.start_date %> </h2>
   <h2> End date: <%= @reservation.end_date %> </h2>
-  <h2> Number of people: <%= @reservation.number_of_people %> </h2>
+  <h2> Number of people: <%= @reservation.number_of_people.to_i %> </h2>
 </div>
 
 <%= link_to 'Back', :back %>

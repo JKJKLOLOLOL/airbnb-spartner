@@ -1,34 +1,40 @@
-<div style= "margin:100px;">
- <% username = current_user.email.split("@").first.capitalize %>
-<h1><%= "Welcome, #{username}!"%></h1>
-<h2>Your reservations</h2>
-<h2>Pending review</h2>
+<% username = current_user.email.split("@").first.capitalize %>
+<div style= "margin:20px 100px;">
+  <div class="d-flex justify-content-between bd-highlight mb-3">
+    <div class="p-2 bd-highlight">
+      <h2><%= "Welcome, #{username}!"%></h2>
+      <h3>Pending reservations</h3>
+    </div>
+    <div class="p-2 bd-highlight">
+      <%= link_to 'Add new listing', new_listing_path, class: "btn btn-md", style: "border-color: black; border-radius:10px;" %>
+    </div>
+  </div>
 
-<h1>Current user: <%= current_user.id %></h1>
-
-<%= link_to 'Add new listing', new_listing_path %>
-
-</div>
-
-<div>
-<h2>
-  <table style="margin: auto; text-align: center; border: 1px;">
-    <tr>
-      <th>Accept/Decline</th>
-      <th>Status</th>
-      <th>Guest ID</th>
-      <th>Dates</th>
-      <th>Listing</th>
-    </tr>
-    <% @reservations.each do |r|%>
+  <div class="res-table col-12">
+    <table class="col-12">
       <tr>
-        <td>DROP MENU</td>
-        <td><%= r.status%></td>
-        <td><%= r.user_id%></td>
-        <td><%= "#{r.start_date} to #{r.end_date}" %></td>
-        <td><%= r.listing.name%><%="(##{r.listing_id})" %></td>
+        <th></th>
+        <th>Status</th>
+        <th>Guest ID</th>
+        <th>Dates</th>
+        <th>Listing</th>
       </tr>
-    <%end%>
-  </table>
-  </h2>
+      <% @reservations.each do |r|%>
+        <tr>
+          <td>
+            <%= link_to 'Accept', accept_reservation_path(r), class: "btn btn-md", style: "border-color: black; border-radius:10px;" %>
+            <%= link_to 'Decline', reject_reservation_path(r), class: "btn btn-md", style: "border-color: black; border-radius:10px;" %>
+          </td>
+          <td><%= r.status%></td>
+          <td><%= r.user.email%></td>
+          <td><%= "#{r.start_date} to #{r.end_date}" %></td>
+          <td><%= r.listing.name%><%="(##{r.listing_id})"%>
+          <br>
+          <%= cl_image_tag r.listing.photos.first.key, crop: :fill %>
+          </td>
+        </tr>
+      <%end%>
+    </table>
+    </h2>
+  </div>
 </div>
