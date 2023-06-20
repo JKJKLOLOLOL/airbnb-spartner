@@ -1,10 +1,11 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show]
+
   def index
     @listings = Listing.all
     @wishlists = current_user.wishlists
     @favourites = current_user.favourites
-    # @listing = current_user.listings
+    @wishlist = Wishlist.new
   end
 
   def new

@@ -4,9 +4,9 @@
   </div>
 </div>
 
-<div class="container border border-primary my-5">
+<div class="container my-5">
   <div>
-    <h1 class="display-1">My Wishlists</h1>
+    <h1 class="display-3 fw-bold fs-2">Wishlists</h1>
   </div>
 
     <% if @wishlists.empty? %>
@@ -18,12 +18,20 @@
 
     <div class="all-cards">
       <% @wishlists.each do |wishlist| %>
-        <div class="border border-primary p-3">
-          <div class="border border-primary">
-            <%= link_to wishlist.name, wishlist_path(wishlist) %>
+
+          <div class="my-3">
+            <div class="img-alignme">
+              <div style="background-image: url(<%= cl_image_path(wishlist.listings[0].photos[0].key)%>); background-position: center; background-size: cover; height: 300px; width: 100%;"></div>
+              <div>
+                <div style="background-image: url(<%= wishlist.listings[1] ? cl_image_path(wishlist.listings[1].photos[0].key) : ''%>); background-position: center; background-size: cover; height: 150px; width: 100%"></div>
+                <div style="background-image: url(<%= wishlist.listings[2] ? cl_image_path(wishlist.listings[2].photos[0].key) : ''%>); background-position: center; background-size: cover; height: 150px; width: 100%"></div>
+              </div>
+            </div>
+            <div class="display-6">
+              <%= link_to wishlist.name, wishlist_path(wishlist), style: 'text-decoration: none; font-size: 20px; color: black; font-weight: bold;' %>
+            </div>
           </div>
-        </div>
       <% end %>
-      </div>
+    </div>
 
     <% end %>

@@ -1,17 +1,14 @@
-<br>
-<br>
-<br>
-<br>
-<h1><%= @wishlist.name %></h1>
+<div class="container">
+  <h1 class="pt-5"><%= @wishlist.name.capitalize %></h1>
 
-  <% @wishlist.listings.each do |listing| %>
-    <p><%= listing.name %></p>
-    <br>
-    <p><%= listing.address %></p>
-    <br>
-    <p><%= listing.description %></p>
-    <hr>
-  <% end %>
-
-
-<p><%= @favourite %></p>
+  <div class="all-cards">
+    <% @wishlist.listings.each do |listing| %>
+      <div style="width: 100px; height: 100px; background-image: url('app/assets/images/haha1.jpg');">Image Here</div>
+      <div>
+          <%= listing.name %><br>
+          <%= listing.address %><br>
+          <%= listing.description %>
+      </div>
+    <% end %>
+  </div>
+</div>
