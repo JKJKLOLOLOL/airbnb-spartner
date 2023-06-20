@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_listing, only: %i[show]
 
   def index
@@ -19,6 +20,7 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to listing_path(@listing)
     else
+      raise
       render :new, status: :unprocessable_entity
     end
   end
@@ -37,4 +39,5 @@ class ListingsController < ApplicationController
   def set_listing
     @listing = Listing.find(params[:id])
   end
+
 end
