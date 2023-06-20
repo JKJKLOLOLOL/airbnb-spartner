@@ -4,8 +4,8 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
-    @wishlists = current_user.wishlists
-    @favourites = current_user.favourites
+    @wishlists = user_signed_in? ? current_user.wishlists : []
+    @favourites = user_signed_in? ? current_user.favourites : []
     @wishlist = Wishlist.new
   end
 
