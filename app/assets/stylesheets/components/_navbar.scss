@@ -26,3 +26,16 @@ collapse navbar-collapse{
   background-color: #e1dddd;
   margin-top: 10px;
 }
+
+.btn-switch{
+  color: black;
+  background-color: white;
+  border-radius: 30px;
+  border: white;
+  padding: 10px;
+  text-decoration: none;
+}
+.btn-switch:hover{
+  background-color: rgb(221, 216, 216);
+  text-decoration: none;
+}

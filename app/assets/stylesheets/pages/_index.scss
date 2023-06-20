@@ -12,7 +12,7 @@ body {
 
 .cat-bar {
   position: sticky;
-  top: 88px;
+  top: 75px;
   background-color: white;
   z-index: 10;
 }
@@ -52,9 +52,11 @@ body {
     border-radius: 30px;
     border: white;
     padding: 10px;
+    text-decoration: none;
   }
   .btn-switch:hover{
     background-color: rgb(221, 216, 216);
+    text-decoration: none;
   }
   .button-top-line a{
     text-decoration: none;
