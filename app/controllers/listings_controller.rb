@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_listing, only: %i[show]
+
   def index
     @listings = Listing.all
     @wishlists = current_user.wishlists
@@ -24,7 +25,10 @@ class ListingsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @reservation = Reservation.new
+    @reservation.listing_id = @listing.id
+  end
 
   private
 
