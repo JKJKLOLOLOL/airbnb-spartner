@@ -1,34 +1,8 @@
-<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon ">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= cl_image_tag("owner_logo_tele7e") %>
-    <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<%# Import updated NAV%>
+      <%# cl_image_tag("owner_logo_tele7e") %>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>  <%# what is our home page %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="form container col-6" style="margin-top: 100px; margin-bottom: 20px">
+<div class="form container col-6" style="margin: 20px auto;">
   <h1>Add new listing</h1>
   <span class="formtext">
     <%= simple_form_for (@listing) do |f| %>

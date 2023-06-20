@@ -1,5 +1,5 @@
-<div class="container pt-5">
-  <h2><strong><%= @listing.name %></strong></h2>
+<div class="container pt-5", style="margin-top: 10px; margin-bottom: 10px;">
+  <h2 class="bolded-text"><strong><%= @listing.name %></strong></h2>
 
   <div class="details d-flex">
     <div style="flex-grow: 1">
@@ -15,10 +15,7 @@
   </div>
 
   <% if @listing.photos.attached? %>
-    <div class="container" style="
-    overflow:hidden;
-    border-radius: 25px;
-    ">
+    <div class="container" style="border-radius: 25px; overflow:hidden;">
       <div class="row no-padding">
         <div class="col-6">
           <%= cl_image_tag @listing.photos.first.key, class: "", style:"
@@ -49,11 +46,11 @@
   <% end %>
 
     <!-- restaurant menu / checkout-->
-    <div class="container py-3">
+    <div class="container py-3", style="margin-top: 10px; margin-bottom: 10px;">
       <div class="row">
         <div class="col-md-8">
           <% username = @listing.user.email.split("@").first.capitalize %>
-          <h2>Home hosted by <%= username %></h2>
+          <h2 class="bolded-text">Home hosted by <%= username %></h2>
 
           <div class="line"></div>
 
@@ -74,43 +71,32 @@
         </div>
           <div class="col-md-4">
             <!-- checkout -->
-            <div class="reserve-container">
+            <div class="reserve-container", style="margin-top: 10px; margin-bottom: 10px;">
 
               <div class="d-flex justify-content-between my-3">
-                <h2><strong><%= @listing.price.round %> SGD</strong><small>night</small></h2>
+                <h2 class="bolded-text"><strong><%= @listing.price.round %> SGD</strong><small>night</small></h2>
               </div>
 
               <div class="checkout outline">
+                <%= simple_form_for([@listing, @reservation]) do |f| %>
                 <div class="d-flex" style="border-bottom: 1px solid #cacaca;">
                   <div class="w-50 p-3" style="border-right: 1px solid #cacaca;">
                     <div><strong>CHECK-IN</strong></div>
-                    <div><%= Date.today %></div>
+                    <%= f.input :start_date, label: false, input_html: { class: 'custom-date-input' } %>
                   </div>
                   <div class="w-50 p-3">
                     <div><strong>CHECK-OUT</strong></div>
-                    <div><%= Date.today %></div>
+                    <%= f.input :end_date, label: false, input_html: { class: 'custom-date-input' } %>
                   </div>
                 </div>
-                  <div class="w-50 p-3">
+                  <div class="w-100 p-3">
                     <div><strong>GUESTS</strong></div>
-                    <div><%= @listing.max_cap %></div>
+                    <%= f.input :number_of_people, label: false, default: 1, input_html: { class: 'custom-number-people' }, collection: (1..9)  %>
                   </div>
-              </div>
-              <p class="my-3" style="text-align: center">You won't be charged yet</p>
-              <!-- make this a full length button -->
-              <a href="" class="reserve-btn w-100">Reserve</a>
-
-              <!-- /checkout -->
-              <div class="d-flex justify-content-between my-3">
-                <p><strong>Total</strong></p>
-                <p><strong>$<%=@listing.price.round * @listing.max_cap%></strong></p>
-              </div>
-                <%= simple_form_for([@listing, @reservation]) do |f| %>
-                  <%= f.input :start_date %>
-                  <%= f.input :end_date %>
-                  <%= f.input :number_of_people %>
-                  <%= f.submit "Make reservation", class: "btn btn-primary" %>
+                  <%= f.submit "Make reservation", class: "btn btn-primary w-100", input_html: { class: 'custom-submit' } %>
                 <% end %>
+
+              </div>
 
             </div>
 
