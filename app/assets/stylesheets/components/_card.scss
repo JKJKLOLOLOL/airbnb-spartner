@@ -10,3 +10,14 @@
   border-radius: 30px;
   overflow: hidden;
 }
+
+.wishlist-showcards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.show-contain {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+}
