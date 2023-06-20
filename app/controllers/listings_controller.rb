@@ -23,7 +23,10 @@ class ListingsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @reservation = Reservation.new
+    @reservation.listing_id = @listing.id
+  end
 
   private
 

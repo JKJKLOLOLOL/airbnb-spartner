@@ -5,4 +5,5 @@ class Reservation < ApplicationRecord
 
   validates :start_date, :end_date, presence: true # TO-DO match availability?
   validates :status, inclusion: { in: ['Accepeted', 'Pending', 'Rejected'] }
+
 end
