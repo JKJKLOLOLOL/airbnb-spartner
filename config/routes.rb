@@ -10,8 +10,16 @@ Rails.application.routes.draw do
     resources :favourites
   end
 
+  resources :reservations, only: [] do
+    member do
+      get :accept, :reject
+    end
+  end
+
   # Defines the root path route ("/")
   # root "articles#index"
 
   get "hosting", to: "pages#hosting"
+  #patch "edit_status", to: "reservations#update" # HELP ME
+
 end
