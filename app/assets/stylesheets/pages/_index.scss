@@ -10,7 +10,7 @@ body {
 
 .cat-bar {
   position: sticky;
-  top: 74px;
+  top: 88px;
   background-color: white;
   z-index: 10;
 }
@@ -100,4 +100,8 @@ body {
     box-shadow: 0 3px 0 rgba(0,0,0,.1);
     border-left: 0.5px solid rgb(182, 178, 178);
     border-right: 0.5px solid rgb(182, 178, 178)
+  }
+
+  .container-nav-bar{
+    align-items: center;
   }
