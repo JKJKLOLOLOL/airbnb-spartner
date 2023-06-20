@@ -1,14 +1,32 @@
-<div class="container">
-  <h1 class="pt-5"><%= @wishlist.name.capitalize %></h1>
 
-  <div class="all-cards">
-    <% @wishlist.listings.each do |listing| %>
-      <div style="width: 100px; height: 100px; background-image: url('app/assets/images/haha1.jpg');">Image Here</div>
-      <div>
-          <%= listing.name %><br>
-          <%= listing.address %><br>
-          <%= listing.description %>
+  <div class="show-contain mx-3">
+    <div style="margin-right: 5px;">
+    <a href="<%= wishlists_path %>">
+      <i class="fa-solid fa-arrow-left-long fa-lg mt-4"></i>
+    </a>
+
+      <h1 class="pt-0 my-3"><%= @wishlist.name.capitalize %></h1>
+      <div class="wishlist-showcards">
+        <% @wishlist.listings.each do |listing| %>
+          <div>
+            <img src="<%= image_path('wishlist-banner.jpg') %>" width="100%" alt="" style="border-radius: 20px;">
+            <div class="d-flex justify-content-between px-1">
+              <p class="fw-bold fs-5">
+                <%= listing.name %>
+              </p><br>
+              <p class="text-black" style= "color: black;" ><i class="fa fa-star"></i> 4.5</p>
+            </div>
+            <div class="px-1">
+              <%= listing.address %><br>
+              <%= listing.description %><br>
+              $<%= listing.price %> SGD
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+      <div></div>
+    </div>
+    <div class="vh-100">
+      <img src="<%= image_path('mapbox.jpg') %>"  alt="" style="margin-left: 5px; background-size: cover; object-fit: cover; width: 100%; height: 100%;">
+    </div>
   </div>
-</div>
